@@ -15,12 +15,12 @@
 - **Python** (1.9%): 메르센 소수 계산 로직
 
 ## 🌐 웹사이트
-**[메르센 소수 찾기 다운로드 페이지](https://raw.githubusercontent.com/sihuju992-lab/-1.0/main/index.html)**
+**[메르센 소수 찾기 다운로드 페이지](https://sihuju992-lab.github.io/-1.0/)**
 
 ### QR 코드
-아래 QR 코드를 스캔하면 다운로드 페이지로 이동합니다:
+아래 QR 코드를 스캔하면 웹사이트로 이동합니다:
 
-[![QR Code](https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://raw.githubusercontent.com/sihuju992-lab/-1.0/main/index.html)](https://raw.githubusercontent.com/sihuju992-lab/-1.0/main/index.html)
+[![QR Code](https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://sihuju992-lab.github.io/-1.0/)](https://sihuju992-lab.github.io/-1.0/)
 
 ## 사용 방법
 웹사이트에 접속하여 원하는 범위의 메르센 소수를 검색할 수 있습니다.
