@@ -4,191 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>메르센 소수 찾기 - 다운로드</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .container {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      max-width: 600px;
-      width: 100%;
-      padding: 50px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #333;
-      margin-bottom: 10px;
-      font-size: 2.5em;
-    }
-
-    .subtitle {
-      color: #666;
-      margin-bottom: 30px;
-      font-size: 1.1em;
-    }
-
-    .description {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 30px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .features {
-      margin-bottom: 30px;
-      text-align: left;
-      display: inline-block;
-    }
-
-    .features li {
-      list-style: none;
-      padding: 10px 0;
-      color: #666;
-    }
-
-    .features li:before {
-      content: "✓ ";
-      color: #667eea;
-      font-weight: bold;
-      margin-right: 10px;
-    }
-
-    .download-section {
-      margin-bottom: 30px;
-    }
-
-    .download-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 15px 40px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.1em;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-decoration: none;
-      margin: 10px 10px;
-    }
-
-    .download-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-    }
-
-    .download-btn.secondary {
-      background: #e9ecef;
-      color: #333;
-    }
-
-    .download-btn.secondary:hover {
-      background: #dee2e6;
-    }
-
-    .file-info {
-      background: #f0f4ff;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      border-left: 4px solid #667eea;
-    }
-
-    .file-info p {
-      color: #666;
-      margin: 8px 0;
-    }
-
-    .file-info strong {
-      color: #333;
-    }
-
-    .divider {
-      height: 1px;
-      background: #e0e0e0;
-      margin: 30px 0;
-    }
-
-    .footer {
-      color: #999;
-      font-size: 0.9em;
-      margin-top: 20px;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔮 메르센 소수 찾기</h1>
-    <p class="subtitle">Mersenne Prime Finder</p>
+  <h1>메르센 소수 찾기</h1>
+  <p>Mersenne Prime Finder</p>
 
-    <div class="description">
-      어떤 숫자(p)를 입력하면, 2<sup>p</sup> - 1 모양의 메르센 소수를 찾아주는 프로그램입니다!
-      <br><br>
-      예: 31을 입력하면 2³¹ - 1 = 2,147,483,647 을 계산합니다.
-    </div>
+  <p>어떤 숫자(p)를 입력하면, 2^p - 1 모양의 메르센 소수를 찾아주는 프로그램입니다.</p>
+  <p>예: 31을 입력하면 2^31 - 1 = 2,147,483,647 을 계산합니다.</p>
 
-    <ul class="features">
-      <li>빠른 Lucas-Lehmer 알고리즘 적용</li>
-      <li>BigInt를 사용한 대용량 숫자 지원</li>
-      <li>실시간 계산 진행 상황 표시</li>
-      <li>메르센 소수 자동 검증</li>
-    </ul>
+  <h2>기능</h2>
+  <ul>
+    <li>빠른 Lucas-Lehmer 알고리즘 적용</li>
+    <li>BigInt를 사용한 대용량 숫자 지원</li>
+    <li>실시간 계산 진행 상황 표시</li>
+    <li>메르센 소수 자동 검증</li>
+  </ul>
 
-    <div class="divider"></div>
+  <h2>다운로드</h2>
 
-    <div class="download-section">
-      <h2 style="color: #333; margin-bottom: 20px;">다운로드</h2>
+  <p>파일명: mersenne-finder.html</p>
+  <p>파일 크기: 약 7KB</p>
+  <p>요구사항: 웹 브라우저 (인터넷 필요 없음)</p>
 
-      <div class="file-info">
-        <p><strong>📄 파일명:</strong> mersenne-finder.html</p>
-        <p><strong>📊 파일 크기:</strong> ~7KB</p>
-        <p><strong>🔧 요구사항:</strong> 웹 브라우저 (인터넷 필요 없음)</p>
-      </div>
+  <p><a href="mersenne-finder.html" download="mersenne-finder.html">다운로드 (HTML)</a></p>
 
-      <a href="mersenne-finder.html" download="mersenne-finder.html" class="download-btn">
-        💾 다운로드 (HTML)
-      </a>
+  <p><a href="https://github.com/sihuju992-lab/-1.0">GitHub에서 보기</a></p>
 
-      <br>
+  <h2>사용 방법</h2>
+  <ol>
+    <li>파일을 다운로드합니다</li>
+    <li>웹 브라우저로 HTML 파일을 엽니다</li>
+    <li>찾고 싶은 지수(p)를 입력합니다 (예: 31)</li>
+    <li>"마법 시작!" 버튼을 클릭합니다</li>
+    <li>메르센 소수 결과를 확인합니다</li>
+  </ol>
 
-      <a href="https://github.com/sihuju992-lab/-1.0" class="download-btn secondary">
-        🐙 GitHub에서 보기
-      </a>
-    </div>
-
-    <div class="divider"></div>
-
-    <div style="text-align: left; background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-      <h3 style="color: #333; margin-bottom: 15px;">📖 사용 방법</h3>
-      <ol style="color: #666; line-height: 2;">
-        <li>파일을 다운로드합니다</li>
-        <li>웹 브라우저로 HTML 파일을 엽니다</li>
-        <li>찾고 싶은 지수(p)를 입력합니다 (예: 31)</li>
-        <li>"마법 시작!" 버튼을 클릭합니다</li>
-        <li>메르센 소수 결과를 확인합니다</li>
-      </ol>
-    </div>
-
-    <p class="footer">
-      💡 팁: 지수가 클수록 계산 시간이 오래 걸립니다. 처음엔 작은 숫자(2-31)부터 시작해보세요!
-    </p>
-  </div>
+  <p>팁: 지수가 클수록 계산 시간이 오래 걸립니다. 처음엔 작은 숫자(2-31)부터 시작해보세요!</p>
 </body>
 </html>
