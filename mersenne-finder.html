@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메르센 소수 찾기</title>
+</head>
+<body>
+  <h1>메르센 소수 찾기</h1>
+  <p>어떤 숫자(p)를 넣으면, 2^p - 1 모양의 메르센 소수를 찾아줄게!</p>
+  <p>(예: 31을 넣으면 2^31 - 1 = 2,147,483,647)</p>
+  
+  <input type="number" id="limit" placeholder="어디까지 찾아볼까? (예: 31)" min="2" />
+  <button onclick="findMersenne()">마법 시작!</button>
+  
+  <div id="output" style="display: none; margin-top: 20px;">
+    <p id="status"></p>
+    <ul id="results-list"></ul>
+  </div>
+
+  <script>
+    function bigIntSqrt(n) {
+      if (n < 2n) return n;
+      const bitLength = n.toString(2).length;
+      let x = 1n << (BigInt(bitLength + 1) >> 1n);
+      while (true) {
+        let next_x = bitwiseAdd(x, n / x) >> 1n;
+        if (next_x >= x) {
+          break;
+        }
+        x = next_x;
+      }
+      const x2 = x * x;
+      if (x2 > n) {
+        x = bitwiseSub(x, 1n);
+      } else if (bitwiseAdd(bitwiseAdd(x2, x << 1n), 1n) <= n) {
+        x = bitwiseAdd(x, 1n);
+      }
+      return x;
+    }
+
+    function bitwiseAdd(a, b) {
+      while (b !== 0n) {
+        let carry = a & b;
+        a = a ^ b;
+        b = carry << 1n;
+      }
+      return a;
+    }
+
+    function bitwiseSub(a, b) {
+      while (b !== 0n) {
+        let borrow = (~a) & b;
+        a = a ^ b;
+        b = borrow << 1n;
+      }
+      return a;
+    }
+
+    function isPrime(num) {
+      if (num < 2n) return false;
+      if (num === 2n || num === 3n) return true;
+      
+      if ((num & 1n) === 0n || num % 3n === 0n) return false;
+      
+      let limit = bigIntSqrt(num);
+      let i = 5n;
+      while (i <= limit) {
+        if (num % i === 0n || num % bitwiseAdd(i, 2n) === 0n) return false;
+        i = bitwiseAdd(i, 6n);
+      }
+      return true;
+    }
+
+    function lucasLehmer(p) {
+      if (p === 2n) return true;
+      let m = bitwiseSub(1n << p, 1n);
+      let s = 4n;
+      const limit = bitwiseSub(p, 2n);
+      for (let i = 0n; i < limit; i = bitwiseAdd(i, 1n)) {
+        let sq;
+        const s2 = s * s;
+        if (s2 < 2n) {
+          sq = bitwiseSub(bitwiseAdd(s2, m), 2n);
+        } else {
+          sq = bitwiseSub(s2, 2n);
+        }
+        let sum = bitwiseAdd(sq & m, sq >> p);
+        if (sum >= m) {
+          sum = bitwiseSub(sum, m);
+        }
+        s = sum;
+      }
+      return s === 0n;
+    }
+
+    async function findMersenne() {
+      const startBtn = document.querySelector('button');
+      startBtn.disabled = true;
+
+      const limitInput = document.getElementById('limit');
+      const outputDiv = document.getElementById('output');
+      let maxP;
+      try {
+        maxP = BigInt(limitInput.value);
+      } catch (e) {
+        maxP = 0n;
+      }
+
+      outputDiv.style.display = 'block';
+
+      if (maxP < 2n) {
+        document.getElementById('status').innerHTML = '2 이상의 숫자를 입력해줘!';
+        startBtn.disabled = false;
+        return;
+      }
+
+      document.getElementById('status').innerHTML = '계산 준비 중...';
+      document.getElementById('results-list').innerHTML = '';
+      const statusP = document.getElementById('status');
+      const listUl = document.getElementById('results-list');
+      
+      const results = [];
+      const startTime = Date.now();
+      let lastYieldTime = Date.now();
+
+      for (let p = 2n; p <= maxP; p = bitwiseAdd(p, 1n)) {
+        if (isPrime(p)) {
+          let now = Date.now();
+          if (now - lastYieldTime > 50) {
+            statusP.innerHTML = `지수 2^${p} - 1 검사 중... (실시간 탐색)`;
+            await new Promise(resolve => setTimeout(resolve, 0));
+            lastYieldTime = Date.now();
+          }
+
+          if (lucasLehmer(p)) {
+            const mersenne = (1n << p) - 1n;
+            results.push({ p: p.toString(), value: mersenne.toString() });
+            listUl.innerHTML += `<li>2^${p.toString()} - 1 = ${mersenne.toString()}</li>`;
+          }
+        }
+      }
+
+      const elapsed_ms = Date.now() - startTime;
+      const seconds = Math.floor(elapsed_ms / 1000);
+      const milliseconds = elapsed_ms % 1000;
+      const elapsed = seconds + '.' + String(milliseconds).padStart(3, '0');
+      statusP.innerHTML = `결과: 메르센 소수 ${results.length}개를 찾았어! (걸린 시간: ${elapsed}초)`;
+
+      startBtn.disabled = false;
+    }
+  </script>
+</body>
+</html>
